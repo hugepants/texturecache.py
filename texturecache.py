@@ -4858,7 +4858,7 @@ def cacheImages(mediatype, jcomms, database, data, title_name, id_name, force, n
     t = MyImageLoader(single_work_queue, multiple_work_queue, error_queue, complete_queue,
                       gConfig, gLogger, TOTALS, force, gConfig.DOWNLOAD_RETRY)
     THREADS.append(t)
-    t.setDaemon(True)
+    t.daemon = True
 
   if not multiple_work_queue.empty():
     tCount = gConfig.DOWNLOAD_THREADS["download.threads.%s" % mediatype]
@@ -4868,7 +4868,7 @@ def cacheImages(mediatype, jcomms, database, data, title_name, id_name, force, n
       t = MyImageLoader(multiple_work_queue, single_work_queue, error_queue, complete_queue,
                         gConfig, gLogger, TOTALS, force, gConfig.DOWNLOAD_RETRY)
       THREADS.append(t)
-      t.setDaemon(True)
+      t.daemon = True
 
   # Start the threads...
   for t in THREADS: t.start()
@@ -6131,7 +6131,7 @@ def _ProcessIMDB(mediatype, jcomms, data, plotFull, plotOutline, movies250, imdb
   for i in range(threadcount):
     t = MyIMDBLoader(gConfig, gLogger, input_queue, output_queue, plotFull, plotOutline, movies250, imdbfields)
     threads.append(t)
-    t.setDaemon(True)
+    t.daemon = True
 
   # Start the threads...
   for t in threads: t.start()
@@ -7358,7 +7358,7 @@ def rbphdmi(delay):
 
   cmdqueue = Queue.Queue()
   hdmimgr = MyHDMIManager(gConfig, gLogger, cmdqueue, hdmidelay=delay)
-  hdmimgr.setDaemon(True)
+  hdmimgr.daemon = True
   hdmimgr.start()
 
   gLogger.debug("Connecting to Kodi on %s..." % gConfig.KODI_HOST)

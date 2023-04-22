@@ -173,7 +173,7 @@ The utility has several options that operate on media library items grouped into
 * tvshows
 
 The following "meta" media classes can also be used in place of one of the above media classes:
-* music _(equivalent to: `albums` + `artists` + `songs`)_
+* audio _(equivalent to: `albums` + `artists` + `songs`)_
 * video _(equivalent to: `movies` + `sets` + `tvshows`)_
 * all _(equivalent to: `addons` + `agenres` + `vgenres` + `pvr.tv` + `pvr.radio` + `albums` + `artists` + `songs` + `movies` + `sets` + `tvshows`)_
 
